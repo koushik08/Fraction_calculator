@@ -1,1 +1,2 @@
-# Fraction_calculator
+# FractionCalculator
+in Java
