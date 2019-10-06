@@ -724,4 +724,20 @@ public class FractionCalculator extends JFrame {
 		f.pack();
 		f.setVisible(true);
 	}
+	
+	
+	   class ViewHolder extends RecyclerView.ViewHolder {
+            final View mView;
+            final TextView mIdView;
+            final TextView mContentView;
+            SongUtils.Song mItem;
+
+            ViewHolder(View view) {
+                super(view);
+                mView = view;
+                mIdView = (TextView) view.findViewById(R.id.id);
+                mContentView = (TextView) view.findViewById(R.id.content);
+            }
+        }
+    }
 }
