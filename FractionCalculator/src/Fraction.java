@@ -134,6 +134,9 @@ public class Fraction {
 		return i;
 	}
 	
+	
+	
+	
 	public Fraction multiply(Fraction frac) {
 		int n, d;
 		n = this.numerator * frac.getNumerator();
@@ -149,6 +152,29 @@ public class Fraction {
 		return i;
 	}
 	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_song_detail);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+        setSupportActionBar(toolbar);
+
+        // Show the Up button in the action bar.
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        // This activity displays the detail. In a real-world scenario,
+        // get the data from a content repository.
+        mSong = SongUtils.SONG_ITEMS.get
+                (getIntent().getIntExtra(SongUtils.SONG_ID_KEY, 0));
+        // Show the detail information in a TextView.
+        if (mSong != null) {
+            ((TextView) findViewById(R.id.song_detail))
+                    .setText(mSong.details);
+        }
+    }
 	public Fraction divide(Fraction frac) {
 		int n, d;
 		frac = frac.inverse();
