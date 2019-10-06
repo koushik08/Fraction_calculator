@@ -56,4 +56,22 @@ public class JTextFieldHintUI extends BasicTextFieldUI implements FocusListener 
         super.uninstallListeners();
         getComponent().removeFocusListener(this);
     }
+    
+    @Override
+        public void onBindViewHolder(final ViewHolder holder, int position) {
+            holder.mItem = mValues.get(position);
+            holder.mIdView.setText(String.valueOf(position + 1));
+            holder.mContentView.setText(mValues.get(position).song_title);
+            holder.mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context,
+                            SongDetailActivity.class);
+                    intent.putExtra(SongUtils.SONG_ID_KEY,
+                            holder.getAdapterPosition());
+                    context.startActivity(intent);
+                }
+            });
+        }
 }
